@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - ROTINER</title>
+    <style>
+        /* Estilos CSS (estilos anteriores) */
+        /* ... */
+
+        /* Estilos modernos para a página de Perfil */
+        .profile {
+            text-align: center;
+            padding: 20px;
+            background-color: #3a506b;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            margin: 0 auto;
+            margin-top: 50px;
+            border: white;
+            opacity: 0; /* Comece com uma opacidade de 0 para ocultar o elemento */
+            animation: fadeIn 1s forwards; /* Adicione a animação de fade-in */
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: none;
+        }
+
+        /* Estilizando o label para se parecer com um botão */
+        .custom-upload-button {
+            background-color: #5bc0be;
+            color: #fff;
+            border: none;
+            padding: 2px 2px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: inline-block; /* Para que o label tenha o tamanho do botão */
+        }
+
+        /* Escondendo o input de arquivo */
+        .custom-upload-button input[type="file"] {
+            display: none;
+        }
+
+        .user-info {
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        /* Estilo para as informações do usuário */
+        .user-info h2 {
+            font-size: 24px;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Estilo para as informações de horas dormidas, horas estudadas e hidratação */
+        .user-info p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #000000;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-style: bold;
+            background-color: #feffff;
+            border-radius: 20px;
+        }
+
+        /* Estilo para as barras de progresso */
+        .progress-bar-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-right: 50px;
+            margin-right: -15px;
+            padding-top: 15px;
+            opacity: 0; /* Comece com uma opacidade de 0 para ocultar o elemento */
+            animation: fadeIn 1s forwards; /* Adicione a animação de fade-in */
+        }
+
+        .progress-bg {
+            background-color: #e7405c; /* Cor de fundo da caixa */
+            padding: 10px;
+            border-radius: 20px;
+            margin-right: 15px; /* Espaço entre a caixa e a imagem da esquerda */
+        }
+
+        .progress-image {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 20px;
+            background-color: #ccc;
+            padding: 5px;
+            border-radius: 20px;
+            margin-left: auto; /* Centraliza horizontalmente */
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 60%; /* Defina o valor da barra de progresso aqui (por exemplo, 60%) */
+            background-color: #5bc0be;
+            border-radius: 20px;
+        }
+
+        .progress-right-image {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            margin-right: -25px;
+            padding-left: 15px;
+        }
+
+        .header {
+            background-color: #1c2541;
+            color: #fff;
+            text-align: center;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-button {
+            cursor: pointer;
+            width: 70px;
+            height: 70px;
+            padding-top: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        body {
+            background-color: #0b132b;
+        }
+
+        .imagemm {
+            width: 15%;
+        }
+
+        #username {
+            color: white;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fa003f;
+            border-radius: 20px;
+            margin-right: 60px;
+            margin-left: 60px;
+            margin-bottom: 50px;
+        }
+
+        /* Animação de fade-in */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ... (cabeçalho) ... -->
+    <div class="header">
+        <div class="back-button" onclick="goToHome()">
+            <img src="imagem/voltar.png" alt="Voltar" class="back-button">
+        </div>
+        <h1 class="app-title">R O T I N E R</h1>
+    </div>
+
+    <div class="content">
+        <div class="profile">
+            <img src="imagem/user.png" alt="Foto de Perfil" class="profile-image">
+            <h2 id="username">LUAN</h2>
+            
+            <!-- Label personalizado para o botão de upload -->
+            <label class="custom-upload-button">
+                <input type="file" id="upload-button" accept="image/*" onchange="previewImage()" value="" placeholder="">
+                <img class="imagemm" src="imagem/subir.png" alt="">
+            </label>
+            
+            <div class="user-info">
+                <!-- Barras de progresso -->
+                <div class="progress-bar-container">
+                    <div class="progress-bg">
+                        <img class="progress-image" src="imagem/garrafa.png" alt="Imagem sobre a barra">
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 60%;"></div> <!-- Defina o valor da barra de progresso aqui (por exemplo, 60%) -->
+                    </div>
+                    
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bg">
+                        <img class="progress-image" src="imagem/estudo.png" alt="Imagem sobre a barra">
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 30%;"></div> <!-- Defina o valor da barra de progresso aqui (por exemplo, 30%) -->
+                    </div>
+                   
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bg">
+                        <img class="progress-image" src="imagem/sono.png" alt="Imagem sobre a barra">
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 40%;"></div> <!-- Defina o valor da barra de progresso aqui (por exemplo, 40%) -->
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Adicione uma função para adiar a exibição dos elementos após o carregamento da página
+        window.onload = function () {
+            const profile = document.querySelector('.profile');
+            const progressBars = document.querySelectorAll('.progress-bar-container');
+            
+            // Defina um atraso para a exibição da animação
+            setTimeout(function () {
+                profile.style.opacity = '1';
+                progressBars.forEach(function (progressBar) {
+                    progressBar.style.opacity = '1';
+                });
+            }, 500); // Atraso de 500ms (ajuste conforme necessário)
+        };
+
+        function previewImage() {
+            const uploadButton = document.getElementById('upload-button');
+            const profileImage = document.querySelector('.profile-image');
+            const file = uploadButton.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function goToHome() {
+            window.location.href = "home.html"; // Redireciona para a página Home
+        }
+    </script>
+</body>
+</html>

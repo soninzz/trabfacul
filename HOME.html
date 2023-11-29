@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - ROTINER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0b132b;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #1c2541;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-family: monospace;
+        }
+
+        .app-title {
+            font-size: 24px;
+            margin: 0;
+            font-family: monospace;
+        }
+
+        .user-button {
+            float: left;
+            margin-left: 10px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+            padding-bottom: 50px;
+        }
+
+        .user-button img {
+            width: 100%;
+            height: auto;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            background-color: #3a506b;
+            color: #fff;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            transform: translateX(-250px);
+        }
+
+        .menu {
+            padding: 20px;
+        }
+
+        .menu a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 0;
+            transition: 0.2s;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: inherit;
+        }
+
+        .menu a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            margin-left: 0;
+            padding: 20px;
+            animation: fadeIn 1s;
+        }
+
+        .activity {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            font-family: monospace;
+            font-weight: bold;
+            animation: fadeIn 1s;
+        }
+
+        .activity-icon {
+            width: 70px;
+            height: 70px;
+            margin-right: 20px;
+            float: left;
+        }
+
+        .activity-text {
+            overflow: hidden;
+        }
+
+        .activity h2 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #ccc;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #6fffe9;
+            border-radius: 5px;
+        }
+
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Estilos para telas pequenas (dispositivos móveis) */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(0);
+            }
+
+            .content {
+                margin-left: 250px;
+            }
+        }
+
+        .rmd {
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .botao-remedio {
+            border-radius: 10px;
+            border: none;
+            background-color: #a5aaa9;
+            padding: 5px;
+        }
+
+        .tempin {
+            border-radius: 5px;
+            font-family: monospace;
+            margin-top: 10px;
+            background-color: #5bc0be;
+            color: white;
+            border: none;
+        }
+
+        #intervalo-remedio {
+            border-radius: 5px;
+            font-family: monospace;
+            background-color: #5bc0be;
+            border: none;
+            color: white;
+        }
+
+        .lemb {
+            border-radius: 10px;
+            background-color: #1c2541;
+            color: white;
+            border: none;
+            padding: 5px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-style: bolder;
+        }
+
+        .confirmation-button-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .confirmation-button {
+            background-color: #5bc0be;
+            color: #fff;
+            padding: 5px 2px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        /* Animação de fade-in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilos adicionais para o temporizador */
+        .timer-container {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .timer {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="app-title">R O T I N E R</h1>
+        <div class="user-button" onclick="toggleSidebar()">
+            <img class="user-button" src="imagem/perf.png" alt="Usuário">
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="menu">
+            <a href="configuracoes.html">Configurações</a>
+            <a href="perfil.html">Perfil</a>
+            <a href="ajuda.html">Ajuda</a>
+            <a href="index.html">Sair</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="activity">
+            <img src="imagem/garrafa.png" alt="Garrafa d'Água" class="activity-icon">
+            <div class="activity-text">
+                <h2>HIDRATAÇÃO</h2>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 50%;"></div>
+                </div>
+                <div class="time">
+                    <span>6L</span>
+                    <span>12L</span>
+                </div>
+                <div class="confirmation-button-container">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="activity">
+            <img src="imagem/estudo.png" alt="Livros de Estudo" class="activity-icon">
+            <div class="activity-text">
+                <h2>ESTUDO</h2>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 30%;"></div>
+                </div>
+                <div class="time">
+                    <span>6h</span>
+                    <span>12h</span>
+                </div>
+                <div class="confirmation-button-container">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="activity">
+            <img src="imagem/sono.png" alt="Sono" class="activity-icon">
+            <div class="activity-text">
+                <h2>DESCANSO</h2>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 70%;"></div>
+                </div>
+                <div class="time">
+                    <span>6h</span>
+                    <span>12h</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity">
+            <img src="imagem/remedio.png" alt="Remédio" class="activity-icon">
+            <div class="activity-text">
+                <h2>REMÉDIO</h2>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 20%;"></div>
+                </div>
+                <div class="agendar-lembrete">
+                    <label for="hora-remedio">Horário do Remédio:</label>
+                    <input  class="tempin" type="time" id="hora-remedio">
+                    <select id="intervalo-remedio">
+                        <option value="6">6 horas</option>
+                        <option value="8">8 horas</option>
+                        <option value="12">12 horas</option>
+                    </select>
+                    <button class="lemb" onclick="agendarLembrete()">Agendar Lembrete</button>
+                </div>
+                <!-- Container para o temporizador -->
+                <div class="timer-container">
+                    <p class="timer" id="timer"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isSidebarOpen = false;
+        const lembretesAgendados = [];
+        let timerInterval;
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const userButton = document.querySelector(".user-button");
+
+            if (isSidebarOpen) {
+                sidebar.style.transform = "translateX(-250px)";
+                userButton.style.marginLeft = "10px";
+            } else {
+                sidebar.style.transform = "translateX(0)";
+                userButton.style.marginLeft = "260px";
+            }
+
+            isSidebarOpen = !isSidebarOpen;
+        }
+
+        function agendarLembrete() {
+            const horaRemedio = document.getElementById("hora-remedio").value;
+            const intervaloRemedio = parseInt(document.getElementById("intervalo-remedio").value, 10);
+
+            const agora = new Date();
+            const proximoLembrete = new Date(agora.getTime() + (intervaloRemedio * 60 * 60 * 1000));
+
+            const options = { hour: 'numeric', minute: 'numeric' };
+            const horaProximoLembrete = proximoLembrete.toLocaleTimeString(undefined, options);
+
+            // Adiciona o lembrete agendado à lista
+            lembretesAgendados.push(horaProximoLembrete);
+
+            // Atualiza a exibição dos lembretes agendados
+            atualizarLembretesAgendados();
+
+            // Inicia o temporizador com a hora do próximo lembrete
+            startTimer(proximoLembrete);
+
+            alert(`Lembrete agendado para as ${horaRemedio}. O próximo lembrete será às ${horaProximoLembrete}`);
+        }
+
+        function atualizarLembretesAgendados() {
+            const lembretesAgendadosDiv = document.getElementById("lembretes-agendados");
+            lembretesAgendadosDiv.innerHTML = "<p>Lembretes Agendados:</p>";
+
+            if (lembretesAgendados.length === 0) {
+                lembretesAgendadosDiv.innerHTML += "<p>Nenhum lembrete agendado.</p>";
+            } else {
+                const ul = document.createElement("ul");
+                lembretesAgendados.forEach((lembrete, index) => {
+                    const li = document.createElement("li");
+                    li.textContent = `${index + 1}. ${lembrete}`;
+                    ul.appendChild(li);
+                });
+                lembretesAgendadosDiv.appendChild(ul);
+            }
+        }
+
+        function startTimer(endTime) {
+            function updateTimer() {
+                const now = new Date().getTime();
+                const timeRemaining = endTime - now;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById("timer").textContent = "Lembrete!";
+                } else {
+                    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                    document.getElementById("timer").textContent = `${hours}h ${minutes}m ${seconds}s`;
+                }
+            }
+
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+
+            // Mostrar o temporizador
+            document.querySelector(".timer-container").style.display = "block";
+        }
+    </script>
+</body>
+</html>

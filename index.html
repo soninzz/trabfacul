@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROTINER</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0b132b;
+        
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            
+            
+            
+            /* Aplicar efeito de desfoque */
+            backdrop-filter: blur(0px); /* Ajuste o valor do desfoque conforme necessário */
+            -webkit-backdrop-filter: blur(0px); 
+        }
+        .container {
+            width: 400px;
+            background-color: #1c2541;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            color: #ffffff; /* Cor do texto */
+         
+        }
+        
+        
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffffff; /* Azul claro */
+            font-family:monospace;
+            font-weight: bold;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .error-message {
+            color: #ff0000;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .forgot-password {
+            text-decoration: underline;
+            color: #fafbfc; /* Azul claro */
+            cursor: pointer;
+        }
+        button {
+            width: 50%;
+            padding: 10px;
+            background-color: #5bc0be; /* Azul claro */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0078B8; /* Azul mais escuro no hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>R O T I N E R</h2>
+        <form>
+            <label for="username">Nome de Usuário</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" required>
+
+            <div class="error-message" id="error-message"></div>
+
+            <button type="button" onclick="login()">Login</button>
+        </form>
+        <p class="forgot-password" onclick="forgotPassword()">Esqueceu a senha?</p>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "LUAN" && password === "123") {
+                window.location.href = "home.html"; // Redireciona após login bem-sucedido
+            } else {
+                document.getElementById("error-message").textContent = "Credenciais inválidas. Tente novamente.";
+            }
+        }
+
+        function forgotPassword() {
+            // Aqui você pode redirecionar o usuário para a página de redefinição de senha.
+            // Exemplo: window.location.href = "redefinir_senha.html";
+        }
+    </script>
+</body>
+</html>
